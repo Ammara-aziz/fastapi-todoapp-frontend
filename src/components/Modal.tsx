@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { FaPlus } from "react-icons/fa";
+import EditTask from "@/components/EditTask";
 import {
   Dialog,
   DialogContent,
@@ -8,26 +7,38 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import AddTask from "@/components/AddTask";
+import { Todo } from "../../types";
 // import { Label } from "@/components/ui/label"
 
-export function Modal() {
+// children: React.ReactNode;
+//     title: string;
+//     Adding?: boolean;
+//     Editing?: boolean;
+//     task: Todo;
+
+export function Modal({
+  children,
+  title,
+  Adding,
+  Editing,
+  task,
+}: {
+  children: React.ReactNode;
+  title: string;
+  Adding?: boolean;
+  Editing?: boolean;
+  task: Todo;
+}) {
   return (
     <div>
       <Dialog>
-        <DialogTrigger asChild>
-          <Button
-            variant="outline"
-            className="w-full bg-fuchsia-600 text-lg px-2 py-1 text-stone-100"
-          >
-            Add TASK
-            <FaPlus className="ml-4 text-2xl" />
-          </Button>
-        </DialogTrigger>
+        <DialogTrigger asChild>{children}</DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>ADD NEW TASK</DialogTitle>
+            <DialogTitle>{title}</DialogTitle>
           </DialogHeader>
-          <AddTask />
+          {Adding && <AddTask />}
+          {Editing && <EditTask task={task} />}
         </DialogContent>
       </Dialog>
     </div>
