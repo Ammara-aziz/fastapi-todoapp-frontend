@@ -10,11 +10,6 @@ import AddTask from "@/components/AddTask";
 import { Todo } from "../../types";
 // import { Label } from "@/components/ui/label"
 
-// children: React.ReactNode;
-//     title: string;
-//     Adding?: boolean;
-//     Editing?: boolean;
-//     task: Todo;
 
 export function Modal({
   children,
